@@ -421,7 +421,12 @@ section {
 .feature {
     padding: 35px;
 
-    background: #11151b;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.9)
+        ),
+        #171c22;
 
     border: 1px solid #34BC24;
 
@@ -464,13 +469,13 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(2, 1fr);
 
     gap: 20px;
 }
 
 .mode {
-    min-height: 200px;
+    min-height: 100px;
 
     padding: 30px;
 

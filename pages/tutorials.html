@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TMCC | Tutorials</title>
+<!-- This line links your CSS file -->
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* =========================
+   GAME MODES
+========================= */
+
+.dark-section {
+    background: #0d1015;
+}
+
+.modes {
+		display: grid;
+
+		grid-template-columns:
+			repeat(1, 1fr);
+
+			gap: 0px;
+	}
+
+.mode {
+		min-height: 200px;
+
+		padding: 30px;
+
+		display: flex;
+
+		flex-direction: column;
+
+		justify-content: flex-start;
+
+		background: #11151b;
+
+		border: 1px solid #34BC24;
+
+	}
+
+.mode h3 {
+		color: white;
+
+		font-size: 25px;
+	}
+
+.mode p {
+		color: #999;
+		font-weight: bold !important;
+		font-size: 12px;
+	}
+	
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     LEFT SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        T<span>MC</span>C
+    </div>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="../index.html" class="active">
+                <span class="nav-icon"><img src="../gif/minecraft.gif" alt="GrassBlock" width="20" height="20"></span>
+                <span>Home</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#features">
+                <span class="nav-icon"><img src="../images/shovel.png" alt="shovel" width="32" height="32"></span>
+                <span>LandClaim</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#modes">
+                <span class="nav-icon">🧩</span>
+                <span>Commands</span>
+            </a>
+        </li>
+		
+		<li>
+            <a href="#rules">
+                <span class="nav-icon"><img src="../images/sign.png" alt="sign" width="25" height="25"></span>
+                <span>ChestShop</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="https://discord.gg/UbTmvkNe7e">
+                <span class="nav-icon"><img src="../images/discord.png" alt="discord" width="25" height="25"></span>
+                <span>Discord</span>
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="server-status">
+
+            <div class="status-dot"></div>
+
+            <span>
+                Server Online
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            No P2W Minecraft SMP
+        </div>
+
+        <h1>
+            T<span>MC</span>C
+        </h1>
+
+        <p>
+            Welcome to the tutorials and help page!
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#features"
+               class="button button-primary">
+                Explore Tutorials
+            </a>
+
+        </div>
+		
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            TMCC Tutorials | LandClaims
+        </small>
+
+        <h2>
+            Protect Your Property
+        </h2>
+
+        <p>
+            Quick reference for LandClaiming
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h2>
+              <img src="../images/shovel.png" alt="shovel" width="32" height="32"> Land Claim Video Tutorial
+            </h2>
+
+            <p>
+                <div class="video-container">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/d6h0NL8ub_M?si=_u8K4HK_KITHqANT" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+				</div>
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h2>
+               Quick Commands
+            </h2>
+
+            <p>
+                <li><b>/Rules</b> to get started!
+				<li><b>/Trust</b> and <b>/Untrust</b> Give full perms or removes full perms from a player in your claim.
+				<li><b>/AccessTrust</b> Gives a player permission to use your buttons, levers, and beds.
+				<li><b>/ContainerTrust</b> Gives a player permission to use crafting gear, containers, and animals.
+				<li><b>/TrustList</b> Lists the permissions for the claim you’re standing in.
+				<li><b>/SubdivideClaims</b> Subdivide your claims.
+				<li><b>/ClaimsList</b> Lists your claims and claim block details.
+				<li><b>/AbandonClaim</b> Deletes the claim you’re standing in.
+				<li><b>/AbandonAllClaims</b> Deletes all of your claims.
+				<li><b>/BanFromClaim</b> Bannish a player from your claim.
+				
+            </p>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- GAME MODES -->
+
+<section class="dark-section"
+         id="modes">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            How things work
+        </small>
+
+        <h2>
+            Helpful Commands
+        </h2>
+
+    </div>
+
+
+    <div class="modes">
+
+        <div class="mode">
+
+            <h3>
+                Command Quick Reference
+            </h3>
+
+            <p>
+                <li><b>/Rules</b> will list the rules.
+				<li><b>/Tpr</b> will random teleport you to main world.
+				<li><b>/Back</b> to go back to previous area, does not work on death.
+				<li><b>/Sethome</b> to set a home. <b>/home</b> to teleport to a home.
+				<li><b>/Tpa</b> to request tp a player. <b>/Tpahere</b> to request a player to you.
+				<li><b>/Warps</b> to see available warps.
+				<li><b>/Nickname</b> to nickname yourself.
+				<li><b>/Msg</b> to private message a player.
+				<li><b>/Ignore</b> will ignore a player that is harrassing or annoying you.
+				<li><b>/Ec</b> to open your enderchest.
+				<li><b>/Sb</b> toggles the scoreboard off/on. <b>/Ab Toggle</b> toggles the broadcasts off/on.
+				<li><b>/Ar Check</b> or <b>/Ar Help</b> to see rank information.
+				<li><b>/Who</b> shows whos online. <b>/Realname</b> shows a nicked players realname.
+				<li><b>/Vote</b> to vote. <b>/VoteShop</b> to redeem your <b>/VotePoints</b>.
+				
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- RULES -->
+
+<section class="dark-section"
+         id="rules">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            Economy
+        </small>
+
+        <h2>
+            Item ChestShop
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h3>
+               <img src="../images/shop.png" alt="shop" width="449" height="228">
+            </h3>
+
+            <p>
+                How your sign should look!
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+					First Line: <small>Your Player Name</small>
+					<div>
+				<br>Second Line: <small>What item(s) you want, example shows this player wants 1 Diamond.</small>
+					<div>
+				<br>Third Line: <small>What item(s) you will give for the "wanted" item above.</small>
+					<div>
+            </h3>
+
+            <p>
+                 <h2 style="color: #34BC24;">In short, this player will give you 5 Bread for 1 Diamond.</h2>
+
+            </p>
+
+        </div>
+
+		
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 TMCC. All Rights Reserved.
+    </p>
+
+    <p>
+        Not affiliated with Mojang Studios or Microsoft.
+    </p>
+
+</footer>
+
+</main>
+
+
+<script>
+
+function copyIP() {
+
+    const ip =
+        document.getElementById("serverIP").innerText;
+
+    navigator.clipboard.writeText(ip);
+
+    const button =
+        document.querySelector(".copy-button");
+
+    button.innerText = "Copied!";
+
+    setTimeout(function() {
+
+        button.innerText = "Copy IP";
+
+    }, 2000);
+
+}
+
+
+/* Highlight current navigation item */
+
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll(".sidebar-menu a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop;
+
+        if (pageYOffset >= sectionTop - 200) {
+
+            current =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TMCC | Minecraft Server</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #090b0f;
+    color: #e8e8e8;
+}
+
+/* =========================
+   LEFT NAVIGATION
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 240px;
+    height: 100vh;
+
+    background: #0c0f13;
+
+    border-right: 1px solid #7cff68;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+/* LOGO */
+
+.logo {
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: #7cff68;
+
+    border-bottom: 1px solid #7cff68;
+}
+
+.logo span {
+    color: white;
+}
+
+/* NAVIGATION */
+
+.sidebar-menu {
+    list-style: none;
+
+    padding: 25px 15px;
+}
+
+.sidebar-menu li {
+    margin-bottom: 7px;
+}
+
+.sidebar-menu a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 15px;
+
+    color: #888;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    border-radius: 5px;
+
+    transition: 0.2s;
+}
+
+.sidebar-menu a:hover {
+    color: white;
+
+    background: #151a20;
+}
+
+.sidebar-menu a.active {
+    color: #7cff68;
+
+    background: rgba(124,255,104,0.08);
+
+    border-left: 3px solid #7cff68;
+}
+
+/* ICON */
+
+.nav-icon {
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+/* SIDEBAR BOTTOM */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding: 20px;
+
+    border-top: 1px solid #222831;
+}
+
+.server-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+    color: #777;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #7cff68;
+
+    box-shadow: 0 0 10px #7cff68;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main {
+    margin-left: 240px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 720px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 30px;
+
+    background:
+        linear-gradient(
+            rgba(5,7,10,0.65),
+            rgba(5,7,10,0.95)
+        ),
+        radial-gradient(
+            circle at center,
+            #203b28,
+            #090b0f 70%
+        );
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-tag {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border: 1px solid rgba(124,255,104,0.35);
+
+    color: #7cff68;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 10vw, 130px);
+
+    line-height: 0.9;
+
+    font-weight: 900;
+
+    letter-spacing: -6px;
+
+    color: white;
+}
+
+.hero h1 span {
+    color: #7cff68;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    color: #aaa;
+
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button {
+    display: inline-block;
+
+    padding: 14px 27px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border-radius: 4px;
+
+    transition: 0.2s;
+}
+
+.button-primary {
+    background: #7cff68;
+
+    color: #081008;
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(124,255,104,0.2);
+}
+
+.button-secondary {
+    border: 1px solid #444;
+
+    color: white;
+}
+
+.button-secondary:hover {
+    border-color: #7cff68;
+
+    color: #7cff68;
+}
+
+/* =========================
+   SERVER BAR
+========================= */
+
+.server-bar {
+    max-width: 850px;
+
+    margin: -35px auto 0;
+
+    position: relative;
+
+    padding: 20px 25px;
+
+    background: #11151b;
+
+    border: 1px solid #252b33;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.server-info small {
+    display: block;
+
+    color: #666;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+.server-ip {
+    color: #7cff68;
+
+    font-family: monospace;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.copy-button {
+    padding: 10px 18px;
+
+    border: 1px solid #7cff68;
+
+    background: transparent;
+
+    color: #7cff68;
+
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background: #7cff68;
+
+    color: #080a0d;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 100px 30px;
+}
+
+.container {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.section-header {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section-header small {
+    color: #7cff68;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    font-size: 42px;
+
+    margin-top: 10px;
+
+    color: white;
+}
+
+.section-header p {
+    max-width: 600px;
+
+    margin: 15px auto;
+
+    color: #777;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.feature {
+    padding: 35px;
+
+    background: #11151b;
+
+    border: 1px solid #34BC24;
+
+    transition: 0.25s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+
+    border-color: #7cff68;
+}
+
+.feature-icon {
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+/* =========================
+   GAME MODES
+========================= */
+
+.dark-section {
+    background: #0d1015;
+}
+
+.modes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.mode {
+    min-height: 200px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.9)
+        ),
+        #171c22;
+
+    border: 1px solid #34BC24;
+
+}
+
+.mode h3 {
+    color: white;
+
+    font-size: 25px;
+}
+
+.mode p {
+    color: #999;
+
+    font-size: 14px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top: 1px solid #7cff68;
+
+    border-bottom: 1px solid #7cff68;
+}
+
+.stat {
+    text-align: center;
+
+    padding: 40px 20px;
+
+    border-right: 1px solid #252a31;
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat strong {
+    display: block;
+
+    color: #7cff68;
+
+    font-size: 38px;
+}
+
+.stat span {
+    color: #777;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   RANKS
+========================= */
+
+.ranks {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.rank {
+    padding: 35px;
+
+    text-align: center;
+
+    background: #11151b;
+
+    border: 1px solid #7cff68;
+}
+
+.rank h3 {
+    color: #7cff68;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 20px;
+}
+
+.rank ul {
+    list-style: none;
+
+    text-align: left;
+
+    margin-bottom: 25px;
+}
+
+.rank li {
+    color: #888;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #7cff68;
+}
+
+/* =========================
+   COMMUNITY
+========================= */
+
+.community {
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #1c3321,
+            #090b0f 65%
+        );
+}
+
+.community h2 {
+    color: white;
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.community p {
+    max-width: 600px;
+
+    margin: auto;
+
+    color: #888;
+
+    margin-bottom: 30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px 30px;
+
+    background: #07090c;
+
+    border-top: 1px solid #1c2026;
+
+    text-align: center;
+}
+
+footer p {
+    color: #555;
+
+    font-size: 12px;
+
+    margin: 5px;
+}
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-header {
+    display: none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 850px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .logo {
+        font-size: 18px;
+
+        height: 70px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .sidebar-menu a {
+        justify-content: center;
+
+        padding: 15px 5px;
+    }
+
+    .sidebar-menu a span:not(.nav-icon) {
+        display: none;
+    }
+
+    .sidebar-bottom {
+        padding: 15px 5px;
+    }
+
+    .server-status {
+        justify-content: center;
+    }
+
+    .server-status span {
+        display: none;
+    }
+
+    .main {
+        margin-left: 70px;
+    }
+
+    .features,
+    .modes,
+    .ranks {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .stat:nth-child(1),
+    .stat:nth-child(2) {
+        border-bottom: 1px solid #252a31;
+    }
+
+    .server-bar {
+        margin-left: 20px;
+        margin-right: 20px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    section {
+        padding: 70px 20px;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat {
+        border-right: none !important;
+
+        border-bottom: 1px solid #252a31;
+    }
+
+    .stat:last-child {
+        border-bottom: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     LEFT SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        T<span>MC</span>C
+    </div>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="#home" class="active">
+                <span class="nav-icon"><img src="gif/minecraft.gif" alt="GrassBlock" width="20" height="20"></span>
+                <span>Home</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#features">
+                <span class="nav-icon">✨</span>
+                <span>Features</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#modes">
+                <span class="nav-icon"><img src="images/sword.png" alt="sword" width="20" height="20"></span>
+                <span>Game Modes</span>
+            </a>
+        </li>
+		
+		<li>
+            <a href="#rules">
+                <span class="nav-icon">📜</span>
+                <span>Rules</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="pages/ranks.html">
+                <span class="nav-icon"><img src="images/level.png" alt="level" width="25" height="25"></span>
+                <span>Ranks</span>
+            </a>
+        </li>
+
+		<li>
+            <a href="pages/tutorials.html">
+                <span class="nav-icon">🚀</span>
+                <span>Tutorials</span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="https://discord.gg/UbTmvkNe7e">
+                <span class="nav-icon"><img src="images/discord.png" alt="discord" width="25" height="25"></span>
+                <span>Discord</span>
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="server-status">
+
+            <div class="status-dot"></div>
+
+            <span>
+                Server Online
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            No P2W Minecraft SMP
+        </div>
+
+        <h1>
+            T<span>MC</span>C
+        </h1>
+
+        <p>
+            Explore and secure your areas,
+            fight alongside your friends and create your
+            own Minecraft adventure.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#features"
+               class="button button-primary">
+                Explore TMCC
+            </a>
+
+            <a href="https://discord.gg/UbTmvkNe7e"
+               class="button button-secondary">
+                Join Discord
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVER IP -->
+
+<div class="server-bar">
+
+    <div class="server-info">
+
+        <small>
+            TMCC IP:
+        </small>
+
+        <div class="server-ip" id="serverIP">
+            TinyMC.Club:25601
+        </div>
+
+    </div>
+
+    <button class="copy-button"
+            onclick="copyIP()">
+        Copy IP
+    </button>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            Why TMCC
+        </small>
+
+        <h2>
+            Built For Adventure
+        </h2>
+
+        <p>
+            Everything you need for your
+            Semi-Vanilla Minecraft experience.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h3>
+               ⚔️ | Custom Gameplay
+            </h3>
+
+            <p>
+                Enjoy unique level and ranking systems, custom 
+				gameplay mechanics created for TMCC.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+               🗺️ | Large World
+            </h3>
+
+            <p>
+                Explore new lands, discover secrets
+                and build your ultimate base. Forever
+				world, build freely without threat of resets.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+			
+            <h3>
+              👥 | Community
+            </h3>
+
+            <p>
+                Meet players, form alliances (or enemies) and
+                create your own community.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- GAME MODES -->
+
+<section class="dark-section"
+         id="modes">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            How we work
+        </small>
+
+        <h2>
+            World Modes
+        </h2>
+
+    </div>
+
+
+    <div class="modes">
+
+        <div class="mode">
+
+            <h3>
+                Basic Survival - Hard Difficulty
+            </h3>
+
+            <p>
+                PVE, RealisticSeasons, build and survive. Gravestone
+				created on death. Claims enabled.
+            </p>
+
+        </div>
+
+
+        <div class="mode">
+
+            <h3>
+                Resource World - Easy and Keep Inventory
+            </h3>
+
+            <p>
+                Gather your resources without worrying about 
+				dropping inventory on death. Claims disabled.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- RULES -->
+
+<section class="dark-section"
+         id="rules">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <small>
+            Community Guidelines
+        </small>
+
+        <h2>
+            Server Rules
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h3>
+               1. No Griefing or Stealing within claims.
+            </h3>
+
+            <p>
+                Not claimed areas are fair game!
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+                2. Don't be rude or harass other players.
+            </h3>
+
+            <p>
+                 This is a community. It's a place where people come to relax and have a good time with others.
+				 Any toxic, derogatory or racist language will not be tolerated.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+                3. No Cheating!
+            </h3>
+
+            <p>
+                Hacks, exploits, glitches and unfair modifications
+                are prohibited.
+            </p>
+
+        </div>
+
+
+		<div class="feature">
+
+            <h3>
+                4. No Advertising!
+            </h3>
+
+            <p>
+                TMCC does not allow any kind of server 
+				advertising of other MC servers or services.
+
+            </p>
+
+        </div>
+		
+		<div class="feature">
+
+            <h3>
+                5. No 18+ inappropriate or NSFW Content/skins/nickanames etc.
+            </h3>
+
+            <p>
+                Do NOT post or build any inappropriate / NSFW (not safe for work) content in any way, shape or form. 
+				This rule is to ensure that the players do not come in contact with inappropriate content. 
+				Do not engage in "NSFW" or sexual discussion, nor topics related to self-harm, drugs, politics, or other controversial matters.
+
+            </p>
+
+        </div>
+		
+		<div class="feature">
+
+            <h3>
+                6. No excessive swearing.
+            </h3>
+
+            <p>
+                This server allows swearing, just not too much of it. 
+				If you want to swear, keep in mind rule 2.
+            </p>
+
+        </div>
+		
+		<div class="feature">
+
+            <h3>
+                7. Punishment evasions
+            </h3>
+
+            <p>
+                Trying to evade a punishment or bypass a punishment is NOT allowed. 
+				Once the punishment has been given, the player in question must wait until this punishment is over.  
+				The punishment will be extended or upscaled if needed. It will also be given to any alts.
+            </p>
+
+        </div>
+		
+		<div class="feature">
+
+            <h3>
+                8. Don't promote drugs or drug use
+            </h3>
+
+            <p>
+                This includes but not limited to:
+				<br>Talking or discussing drugs, drug use or other drug related subjects.
+				<br>Renaming items to resemble IRL drugs.
+				<br>Pretending to sell drugs with in-game items (named or unnamed).
+
+            </p>
+
+        </div>
+		
+		<div class="feature">
+
+            <h3>
+                9. Use common sense.
+            </h3>
+
+            <p>
+                Not every situation can be covered by a rule.
+				<br> Staff reserve the right to take action against behavior that seriously harms the server or its community. 
+				<br>Punishments may range from warnings to temporary or permanent bans depending on the situation.
+            </p>
+
+        </div>
+		
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 TMCC. All Rights Reserved.
+    </p>
+
+    <p>
+        Not affiliated with Mojang Studios or Microsoft.
+    </p>
+
+</footer>
+
+</main>
+
+
+<script>
+
+function copyIP() {
+
+    const ip =
+        document.getElementById("serverIP").innerText;
+
+    navigator.clipboard.writeText(ip);
+
+    const button =
+        document.querySelector(".copy-button");
+
+    button.innerText = "Copied!";
+
+    setTimeout(function() {
+
+        button.innerText = "Copy IP";
+
+    }, 2000);
+
+}
+
+
+/* Highlight current navigation item */
+
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll(".sidebar-menu a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop;
+
+        if (pageYOffset >= sectionTop - 200) {
+
+            current =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

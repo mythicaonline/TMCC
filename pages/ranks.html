@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TMCC | Ranks</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #090b0f;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+		
+
+        /* HEADER */
+
+        header {
+            text-align: center;
+			font-size: 20px; 
+            padding: 10px 20px;
+            background: #090b0f;
+            border-bottom: 5px solid #7cff68;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            color: #b7b7b7;
+            font-size: 17px;
+        }
+
+        .progress {
+            margin-top: 15px;
+            color: #9d9d9d;
+            font-size: 14px;
+        }
+		
+		img {
+			height: 300px
+			width: 100%;
+			object-fit: cover;
+		}
+		
+        /* MAIN */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px 80px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .intro h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #aaa;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* RANK GRID */
+
+        .ranks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .rank {
+            position: relative;
+            background: rgba(22, 22, 28, 0.94);
+            border: 3px solid #F6CA0E;
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.25s ease;
+            overflow: hidden;
+        }
+
+        .rank:hover {
+            transform: translateY(-6px);
+            border-color: #F6CA0E;
+            box-shadow: 0 5px 30px rgba(246,202,14,1.0);
+        }
+
+        .rank::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #777;
+        }
+
+        .rank-number {
+            color: #F6CA0E;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rank h2 {
+            font-size: 28px;
+            margin-top: 5px;
+        }
+
+        .rank-name {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .time {
+            display: inline-block;
+            padding: 7px 12px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 6px;
+            color: #ddd;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .perks-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #F6CA0E;
+            margin-bottom: 10px;
+        }
+		
+		.nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #71d47b;
+            font-weight: bold;
+        }
+		
+		.gradient-text {
+        background: linear-gradient(90deg, #fff, #F6CA0E, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+		}
+		
+		/* Apply the custom cursor to the entire webpage */
+        html, body {
+            cursor: url('../images/hand.png'), auto;
+        }
+		
+		/* Optional: Use a different custom cursor when hovering over links or buttons */
+		a, button {
+		    cursor: url('../images/arrow.png'), pointer;
+        }
+
+        /* SPECIAL RANKS */
+		
+		.wood {
+		  border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(158, 134, 92, 1.00)
+            );
+		}
+		
+		.wood::before {
+            background: linear-gradient(90deg, #9E865C, black);
+        }
+		
+		.stone {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(77, 77, 77, 1.00)
+            );
+		}
+		
+		.stone::before {
+            background: linear-gradient(90deg, #4D4D4D, black);
+        }
+		
+		.copper {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(225, 106, 43, 1.00)
+            );
+		}
+		
+		.copper::before {
+            background: linear-gradient(90deg, #dd6a2b, black);
+        }
+		
+		.iron {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(200, 200, 200, 1.00)
+            );
+		}
+		
+		.iron::before {
+            background: linear-gradient(90deg, #C5C5C5, black);
+        }
+
+		.gold {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(217, 187, 0, 1.00)
+            );
+		}
+		
+        .gold::before {
+            background: linear-gradient(90deg, #F6CA0E, black);
+        }
+
+		.emerald {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(70, 159, 44, 1.00)
+            );
+		}
+		
+        .emerald::before {
+            background: linear-gradient(90deg, #469F2C, black);
+        }
+		
+        .diamond {
+			border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(85, 228, 255, 1.00)
+            );
+		}
+			
+        .diamond::before {
+			background: linear-gradient(90deg, #55E4FF, black);
+            
+        }
+
+        .netherite {
+            border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(79, 66, 66, 1.00)
+            );
+        }
+
+        .netherite::before {
+            background: linear-gradient(90deg, #4F4242, black);
+        }
+		
+		.mimic {
+            border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(85, 69, 0, 1.00)
+            );
+        }
+
+        .mimic::before {
+            background: linear-gradient(90deg, #554500, black);
+        }
+
+
+        /* IMPORTANT NOTICE */
+
+        .notice {
+            margin-top: 45px;
+            padding: 20px 25px;
+            background: rgba(255, 185, 60, 0.08);
+            border: 1px solid rgba(255, 185, 60, 0.25);
+            border-radius: 10px;
+            color: #cfcfcf;
+        }
+
+        .notice strong {
+            color: #ffc45b;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.5);
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 50px 15px 40px;
+            }
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .intro h1 {
+                font-size: 28px;
+            }
+
+            .rank {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>T<a href="../index.html" style="color: #7cff68; text-decoration: none;">MC</a>C Playtime Ranks</a></h1>
+
+    <div class="subtitle">
+        Play to earn playtime and automatically unlock new ranks with perks.
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="intro">
+
+        <h2>What do you unlock?</h2>
+
+        <p>
+            The longer you play on TMCC, the more ranks and perks you unlock.
+            Start as a Wood and work your way up to the legendary Netherite rank.
+        </p>
+
+    </div>
+
+
+    <section class="ranks">
+
+
+        <!-- WOOD -->
+
+        <div class="rank wood">
+
+            <div class="rank-number">
+                Starting Rank
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/wood.png" alt="wood" width="64" height="64">  Wood</h2>
+
+            <div class="rank-name">
+                The reliable.
+            </div>
+
+            <div class="time">
+                Starting Rank
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>Default rank for all players</li>
+                <li>3 Homesets</li>
+				<li>Basic Commands
+            </ul>
+
+        </div>
+
+
+        <!-- STONE -->
+
+        <div class="rank stone">
+
+            <div class="rank-number">
+                Rank #1
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/stone.png" alt="stone" width="64" height="64">  Stone</h2>
+
+            <div class="rank-name">
+                The Base.
+            </div>
+
+            <div class="time">
+                ⏳ 1 Hour
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Access to <strong>/Nickname</strong></li>
+				<li>Access to <strong>/Enderchest</strong></li>
+				<li>Access to <strong>/Hat</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- COPPER -->
+
+        <div class="rank copper">
+
+            <div class="rank-number">
+                Rank #2
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/copper.png" alt="copper" width="64" height="64"> Copper</h2>
+
+            <div class="rank-name">
+                The Big Brute
+            </div>
+
+            <div class="time">
+                ⏳ 1 Day
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Weekly Rewards Unlocked</li>
+                <li>Access to <strong>/Disposal</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- IRON -->
+
+        <div class="rank iron">
+
+            <div class="rank-number">
+                Rank #3
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/iron.png" alt="iron" width="64" height="64"> Iron</h2>
+
+            <div class="rank-name">
+                The Wildling
+            </div>
+
+            <div class="time">
+                ⏳ 3 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Premium Daily Rewards Unlocked</li>
+				<li>Monthly Rewards Unlocked</li>
+                <li>Access to <strong>/Anvil</strong></li>
+                <li>Access to <strong>/Condense</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- GOLD -->
+
+        <div class="rank gold">
+
+            <div class="rank-number">
+                Rank #4
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/gold.png" alt="gold" width="64" height="64"> Gold</h2>
+
+            <div class="rank-name">
+                The Spirited
+            </div>
+
+            <div class="time">
+                ⏳ 7 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Premium Weekly Rewards Unlocked</strong></li>
+				<li>Access to <strong>/Workbench</strong></li>
+                <li>Access to <strong>/Loom</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- EMERALD -->
+
+        <div class="rank emerald">
+
+            <div class="rank-number">
+                Rank #5
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/emerald.png" alt="emerald" width="64" height="64"> Emerald</h2>
+
+            <div class="rank-name">
+                The Serpent
+            </div>
+
+            <div class="time">
+                ⏳ 14 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Premium Monthly Rewards Unlocked</li>
+                <li>Access to <strong>/Smithingtable</strong></li>
+                <li>Access to <strong>/Feed</strong></li>
+                <li>Access to <strong>/Kit Emerald</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- DIAMOND -->
+
+        <div class="rank diamond">
+
+            <div class="rank-number">
+                Rank #6
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/diamond.png" alt="diamond" width="64" height="64"> Diamond</h2>
+
+            <div class="rank-name">
+                The Hybrid
+            </div>
+
+            <div class="time">
+                ⏳ 21 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Access to <strong>/Ptime</strong></li>
+                <li>Access to <strong>/Top</strong></li>
+                <li>Access to <strong>/Fix</strong></li>
+                <li>Access to <strong>/Kit Diamond</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- NETHERITE-->
+
+        <div class="rank netherite">
+
+            <div class="rank-number">
+                Final Rank
+            </div>
+
+            <h2><span class="nav-icon"><img src="../images/netherite.png" alt="netherite" width="64" height="64"> Netherite</h2>
+
+            <div class="rank-name">
+                The Ender
+            </div>
+
+            <div class="time">
+                ⏳ 30 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Access to <strong>/Fly</strong></li>
+                <li>Access to <strong>/Kit netherite</strong></li>
+            </ul>
+
+        </div>
+		
+		<!-- DONATE -->
+		
+		<div class="rank mimic">
+		
+		    <div class="rank-number">
+                Enjoying the server?
+            </div>
+
+            <h2 style="color: #FBCB00;"><center><span class="nav-icon"><img src="../images/bundle.png" alt="netherite" width="64" height="64"> Help Today!</h2>
+            <a class="card" href="https://www.paypal.com/paypalme/mrswiccan" style="color: white; text-decoration: none;">
+            <div class="perks-title">
+                Donations
+            </div>
+
+            <div class="time">
+                💰 Donate
+            </div>
+
+            <ul>
+                <li>Keeps us running!</li>
+              
+            </ul>
+
+        </div> 
+
+
+    </section>
+
+
+    <div class="notice">
+
+        <strong><center>⚠ Important:</strong>
+
+        <br>AFK time is not included in AutoRanks playtime.
+        There may be slight differences between your
+        <strong>/Playtime</strong> and <strong>/Ar Check</strong> results.
+
+        <br><br>
+
+        <center>Rank perks are subject to change at any time.
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 TMCC. All Rights Reserved.
+    <br>
+    Enjoy your stay!
+
+</footer>
+
+</body>
+</html>
